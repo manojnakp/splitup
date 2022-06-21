@@ -1,0 +1,479 @@
+openapi: 3.0.0
+info:
+  title: Splitup
+  description: "App to share expenses among friends"
+  contact:
+    name: Dev Team
+    url: "https://github.com/manojnakp/splitup/issues"
+    email: "manojnakp2003@gmail.com"
+  license:
+    name: MIT license
+    url: 'https://opensource.org/licenses/MIT'
+  version: 1.0.0
+servers:
+  - url: '/'
+    description: default
+tags:
+  - name: splitcount
+    x-displayName: Splitcounts
+    description: "splitcount objects"
+  - name: participant
+    x-displayName: Participants
+    description: "participants objects"
+  - name: expense
+    x-displayName: Expenses
+    description: "expenses objects"
+  - name: other
+    x-displayName: Others
+    description: "other objects"
+paths:
+  /all:
+    get:
+      summary: All splitcounts
+      operationId: getAllSplitcounts
+      tags:
+        - splitcount
+      responses:
+        '200':
+          description: '200 ok'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Splitcount'
+        '404':
+          $ref: '#/components/responses/not_found'
+  /{id}:
+    parameters:
+      - $ref: '#/components/parameters/id'
+    get:
+      summary: Get splitcount by id
+      operationId: getSplitcountById
+      tags:
+        - splitcount
+      responses:
+        '200':
+          description: '200 ok'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Splitcount'
+        '404':
+          $ref: '#/components/responses/not_found'
+    post:
+      summary: update existing splitcount
+      operationId: updateSplitcount
+      tags:
+        - splitcount
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SplitcountSmall'
+      responses:
+        '200':
+          $ref: '#/components/responses/ok'
+        '404':
+          $ref: '#/components/responses/not_found'
+        '400':
+          $ref: '#/components/responses/bad_req'
+        '500':
+          $ref: '#/components/responses/server_error'
+    delete:
+      summary: delete splitcount by id
+      operationId: delSplitcount
+      tags:
+        - splitcount
+      responses:
+        '200':
+          $ref: '#/components/responses/ok'
+        '404':
+          $ref: '#/components/responses/not_found'
+        '400':
+          $ref: '#/components/responses/bad_req'
+        '500':
+          $ref: '#/components/responses/server_error'
+  /new:
+    post:
+      summary: create new splitcount
+      operationId: newSplitcount
+      tags:
+        - splitcount
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Splitcount'
+      responses:
+        '200':
+          description: '200 ok'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ok:
+                    type: boolean
+                    example: true
+                  id:
+                    type: string
+                    example: kb9t18wbboczf8xecdiy
+        '404':
+          $ref: '#/components/responses/not_found'
+        '400':
+          $ref: '#/components/responses/bad_req'
+        '500':
+          $ref: '#/components/responses/server_error'
+  /{id}/participants:
+    parameters:
+      - $ref: '#/components/parameters/id'
+    get:
+      summary: Get participants of splitcount
+      operationId: getParticipants
+      tags:
+        - participant
+      responses:
+        '200':
+          description: '200 ok'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Participants'
+        '404':
+          $ref: '#/components/responses/not_found'
+    post:
+      summary: update participants of splitcount
+      operationId: updateParticipants
+      tags:
+        - participant
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Participants'
+      responses:
+        '200':
+          $ref: '#/components/responses/ok'
+        '404':
+          $ref: '#/components/responses/not_found'
+        '400':
+          $ref: '#/components/responses/bad_req'
+        '500':
+          $ref: '#/components/responses/server_error'
+    put:
+      summary: add participant to splitcount
+      operationId: addParticipant
+      tags:
+        - participant
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                participant:
+                  type: string
+                  example: Romeo
+      responses:
+        '200':
+          description: '200 ok'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ok:
+                    type: boolean
+                    example: true
+                  id:
+                    type: string
+                    example: kb9t18wbboczf8xecdiy
+        '404':
+          $ref: '#/components/responses/not_found'
+        '400':
+          $ref: '#/components/responses/bad_req'
+        '500':
+          $ref: '#/components/responses/server_error'
+  /{id}/expenses/all:
+    parameters:
+      - $ref: '#/components/parameters/id'
+    get:
+      summary: All expenses
+      operationId: getAllExpenses
+      tags:
+        - expense
+      responses:
+        '200':
+          description: '200 ok'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Expense'
+        '404':
+          $ref: '#/components/responses/not_found'
+  /{id}/expenses/new:
+    parameters:
+      - $ref: '#/components/parameters/id'
+    post:
+      summary: create new expense
+      operationId: newExpense
+      tags:
+        - expense
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Expense'
+      responses:
+        '200':
+          description: '200 ok'
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ok:
+                    type: boolean
+                    example: true
+                  id:
+                    type: string
+                    example: '31'
+        '404':
+          $ref: '#/components/responses/not_found'
+        '400':
+          $ref: '#/components/responses/bad_req'
+        '500':
+          $ref: '#/components/responses/server_error'
+  /{id}/expenses/{eid}:
+    parameters:
+      - $ref: '#/components/parameters/id'
+      - $ref: '#/components/parameters/eid'
+    get:
+      summary: get expense by id
+      operationId: getExpenseById
+      tags:
+        - expense
+      responses:
+        '200':
+          description: '200 ok'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Expense'
+        '404':
+          $ref: '#/components/responses/not_found'
+    post:
+      summary: Update existing expense
+      operationId: updateExpense
+      tags:
+        - expense
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Expense'
+      responses:
+        '200':
+          $ref: '#/components/responses/ok'
+        '404':
+          $ref: '#/components/responses/not_found'
+        '400':
+          $ref: '#/components/responses/bad_req'
+        '500':
+          $ref: '#/components/responses/server_error'
+    delete:
+      summary: delete expense by id
+      operationId: delExpense
+      tags:
+        - expense
+      responses:
+        '200':
+          $ref: '#/components/responses/ok'
+        '404':
+          $ref: '#/components/responses/not_found'
+        '400':
+          $ref: '#/components/responses/bad_req'
+        '500':
+          $ref: '#/components/responses/server_error'
+  /{id}/balance:
+    parameters:
+      - $ref: '#/components/parameters/id'
+    get:
+      summary: Get who owes whom
+      operationId: getBalance
+      tags:
+        - other
+      responses:
+        '200':
+          description: '200 ok'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BalanceArray'
+        '404':
+          $ref: '#/components/responses/not_found'
+        '400':
+          $ref: '#/components/responses/bad_req'
+        '500':
+          $ref: '#/components/responses/server_error'
+components:
+  responses:
+    ok:
+      description: '200 ok'
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              ok:
+                type: boolean
+                example: true
+    server_error:
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/5xx'
+    bad_req:
+      description: 'Bad Request'
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/bad_req'
+    not_found:
+      description: 'Not found'
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/not_found'
+  parameters:
+    id:
+      name: id
+      in: path
+      description: unique id of splitcount
+      required: true
+      schema:
+        type: string
+        example: kb9t18wbboczf8xecdiy
+    eid:
+      name: eid
+      in: path
+      description: unique id of expense
+      required: true
+      schema:
+        type: string
+        example: '31'
+  schemas:
+    Splitcount:
+      type: "object"
+      properties:
+        title:
+          type: string
+          example: City trip
+        desc:
+          type: string
+          format: markdown
+          example: Sample splitcount sharing expenses of a city trip among friends
+        by:
+          type: string
+          example: Alex
+        on:
+          type: string
+          format: date
+          example: '2016-02-26'
+        participants:
+          $ref: '#/components/schemas/Participants'
+    SplitcountSmall:
+      type: "object"
+      properties:
+        title:
+          type: string
+          example: City trip
+        desc:
+          type: string
+          format: markdown
+          example: Sample splitcount sharing expenses of a city trip among friends
+    Participants:
+      type: array
+      items:
+        type: string
+      example:
+        - Alex
+        - Brian
+        - Julia
+        - Thomas
+    Expense:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Lunch
+        amount:
+          type: number
+          example: 300
+        by:
+          type: string
+          example: Julia
+        when:
+          type: string
+          format: date
+          example: "2016-02-26"
+        among:
+          type: array
+          items:
+            type: number
+          example:
+            - 120
+            - 60
+            - 60
+            - 60
+    BalanceArray:
+      type: array
+      items:
+        type: object
+        properties:
+          from:
+            type: string
+            example: Alex
+          to:
+            type: string
+            example: Julia
+          amount:
+            type: number
+            example: 250
+    bad_req:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              message:
+                type: string
+                example: 'Invalid API request: malformed request body'
+    5xx:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              message:
+                type: string
+                example: 'Internal Server Error'
+    not_found:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              message:
+                type: string
+                example: 'Invalid API request: record not found'

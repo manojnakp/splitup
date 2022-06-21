@@ -1,0 +1,31 @@
+{
+  "name": "splitup",
+  "version": "0.0.0",
+  "description": "Share your expenses among friends",
+  "keywords": [
+    "react",
+    "expense",
+    "friends",
+    "tailwindcss",
+    "expressjs",
+    "frontend",
+    "backend",
+    "full-stack"
+  ],
+  "private": true,
+  "homepage": "https://github.com/manojnakp/splitup#readme",
+  "bugs": "https://github.com/manojnakp/splitup/issues",
+  "license": "MIT",
+  "author": "Manojna <manojnakp2003@gmail.com> (https://github.com/manojnakp)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/manojnakp/splitup.git"
+  },
+  "engines": {
+    "node": "^16.13.0"
+  },
+  "devDependencies": {
+    "@redocly/cli": "^1.0.0-beta.102",
+    "express-generator": "^4.16.1"
+  }
+}
