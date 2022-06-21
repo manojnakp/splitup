@@ -25,7 +25,6 @@
     "node": "^16.13.0"
   },
   "devDependencies": {
-    "@redocly/cli": "^1.0.0-beta.102",
-    "express-generator": "^4.16.1"
+    "@redocly/cli": "^1.0.0-beta.102"
   }
 }
