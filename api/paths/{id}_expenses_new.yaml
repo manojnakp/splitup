@@ -1,0 +1,32 @@
+parameters:
+  - $ref: ../components/parameters/id.yaml
+post:
+  summary: create new expense
+  operationId: newExpense
+  tags:
+    - expense
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/Expense.yaml
+  responses:
+    '200':
+      description: 200 ok
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              ok:
+                type: boolean
+                example: true
+              id:
+                type: string
+                example: '31'
+    '400':
+      $ref: ../components/responses/bad_req.yaml
+    '404':
+      $ref: ../components/responses/not_found.yaml
+    '500':
+      $ref: ../components/responses/server_error.yaml

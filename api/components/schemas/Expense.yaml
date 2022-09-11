@@ -1,0 +1,24 @@
+type: object
+properties:
+  name:
+    type: string
+    example: Lunch
+  amount:
+    type: number
+    example: 300
+  by:
+    type: string
+    example: Julia
+  when:
+    type: string
+    format: date
+    example: '2016-02-26'
+  among:
+    type: array
+    items:
+      type: number
+    example:
+      - 120
+      - 60
+      - 60
+      - 60

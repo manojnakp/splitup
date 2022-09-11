@@ -1,0 +1,52 @@
+parameters:
+  - $ref: ../components/parameters/id.yaml
+  - $ref: ../components/parameters/eid.yaml
+get:
+  summary: get expense by id
+  operationId: getExpenseById
+  tags:
+    - expense
+  responses:
+    '200':
+      description: 200 ok
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Expense.yaml
+    '404':
+      $ref: ../components/responses/not_found.yaml
+    '500':
+      $ref: ../components/responses/server_error.yaml
+post:
+  summary: Update existing expense
+  operationId: updateExpense
+  tags:
+    - expense
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/Expense.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/ok.yaml
+    '400':
+      $ref: ../components/responses/bad_req.yaml
+    '404':
+      $ref: ../components/responses/not_found.yaml
+    '500':
+      $ref: ../components/responses/server_error.yaml
+delete:
+  summary: delete expense by id
+  operationId: delExpense
+  tags:
+    - expense
+  responses:
+    '200':
+      $ref: ../components/responses/ok.yaml
+    '400':
+      $ref: ../components/responses/bad_req.yaml
+    '404':
+      $ref: ../components/responses/not_found.yaml
+    '500':
+      $ref: ../components/responses/server_error.yaml

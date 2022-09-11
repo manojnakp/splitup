@@ -1,0 +1,7 @@
+name: eid
+in: path
+description: unique id of expense
+required: true
+schema:
+  type: string
+  example: '31'

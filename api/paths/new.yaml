@@ -1,0 +1,30 @@
+post:
+  summary: create new splitcount
+  operationId: newSplitcount
+  tags:
+    - splitcount
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/Splitcount.yaml
+  responses:
+    '200':
+      description: 200 ok
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              ok:
+                type: boolean
+                example: true
+              id:
+                type: string
+                example: kb9t18wbboczf8xecdiy
+    '400':
+      $ref: ../components/responses/bad_req.yaml
+    '404':
+      $ref: ../components/responses/not_found.yaml
+    '500':
+      $ref: ../components/responses/server_error.yaml

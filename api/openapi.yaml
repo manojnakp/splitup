@@ -1,0 +1,45 @@
+openapi: 3.0.0
+info:
+  title: Splitup
+  description: App to share expenses among friends
+  contact:
+    name: Dev Team
+    url: https://github.com/manojnakp/splitup/issues
+    email: manojnakp2003@gmail.com
+  license:
+    name: MIT license
+    url: https://opensource.org/licenses/MIT
+  version: 1.0.0
+servers:
+  - url: /
+    description: default
+tags:
+  - name: splitcount
+    x-displayName: Splitcounts
+    description: splitcount objects
+  - name: participant
+    x-displayName: Participants
+    description: participants objects
+  - name: expense
+    x-displayName: Expenses
+    description: expenses objects
+  - name: other
+    x-displayName: Others
+    description: other objects
+paths:
+  /all:
+    $ref: paths/all.yaml
+  /{id}:
+    $ref: paths/{id}.yaml
+  /new:
+    $ref: paths/new.yaml
+  /{id}/participants:
+    $ref: paths/{id}_participants.yaml
+  /{id}/expenses/all:
+    $ref: paths/{id}_expenses_all.yaml
+  /{id}/expenses/new:
+    $ref: paths/{id}_expenses_new.yaml
+  /{id}/expenses/{eid}:
+    $ref: paths/{id}_expenses_{eid}.yaml
+  /{id}/balance:
+    $ref: paths/{id}_balance.yaml

@@ -1,0 +1,7 @@
+name: id
+in: path
+description: unique id of splitcount
+required: true
+schema:
+  type: string
+  example: kb9t18wbboczf8xecdiy

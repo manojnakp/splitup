@@ -1,0 +1,18 @@
+type: object
+properties:
+  title:
+    type: string
+    example: City trip
+  desc:
+    type: string
+    format: markdown
+    example: Sample splitcount sharing expenses of a city trip among friends
+  by:
+    type: string
+    example: Alex
+  'on':
+    type: string
+    format: date
+    example: '2016-02-26'
+  participants:
+    $ref: ./Participants.yaml

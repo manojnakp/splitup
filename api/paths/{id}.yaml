@@ -1,0 +1,51 @@
+parameters:
+  - $ref: ../components/parameters/id.yaml
+get:
+  summary: Get splitcount by id
+  operationId: getSplitcountById
+  tags:
+    - splitcount
+  responses:
+    '200':
+      description: 200 ok
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Splitcount.yaml
+    '404':
+      $ref: ../components/responses/not_found.yaml
+    '500':
+      $ref: ../components/responses/server_error.yaml
+post:
+  summary: update existing splitcount
+  operationId: updateSplitcount
+  tags:
+    - splitcount
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/SplitcountSmall.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/ok.yaml
+    '400':
+      $ref: ../components/responses/bad_req.yaml
+    '404':
+      $ref: ../components/responses/not_found.yaml
+    '500':
+      $ref: ../components/responses/server_error.yaml
+delete:
+  summary: delete splitcount by id
+  operationId: delSplitcount
+  tags:
+    - splitcount
+  responses:
+    '200':
+      $ref: ../components/responses/ok.yaml
+    '400':
+      $ref: ../components/responses/bad_req.yaml
+    '404':
+      $ref: ../components/responses/not_found.yaml
+    '500':
+      $ref: ../components/responses/server_error.yaml

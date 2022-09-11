@@ -1,0 +1,20 @@
+parameters:
+  - $ref: ../components/parameters/id.yaml
+get:
+  summary: All expenses
+  operationId: getAllExpenses
+  tags:
+    - expense
+  responses:
+    '200':
+      description: 200 ok
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/Expense.yaml
+    '400':
+      $ref: ../components/responses/bad_req.yaml
+    '500':
+      $ref: ../components/responses/server_error.yaml

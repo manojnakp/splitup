@@ -1,0 +1,9 @@
+type: object
+properties:
+  title:
+    type: string
+    example: City trip
+  desc:
+    type: string
+    format: markdown
+    example: Sample splitcount sharing expenses of a city trip among friends

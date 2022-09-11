@@ -1,0 +1,9 @@
+description: 200 ok
+content:
+  application/json:
+    schema:
+      type: object
+      properties:
+        ok:
+          type: boolean
+          example: true

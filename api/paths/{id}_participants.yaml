@@ -1,0 +1,71 @@
+parameters:
+  - $ref: ../components/parameters/id.yaml
+get:
+  summary: Get participants of splitcount
+  operationId: getParticipants
+  tags:
+    - participant
+  responses:
+    '200':
+      description: 200 ok
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/Participants.yaml
+    '404':
+      $ref: ../components/responses/not_found.yaml
+    '500':
+      $ref: ../components/responses/server_error.yaml
+post:
+  summary: update participants of splitcount
+  operationId: updateParticipants
+  tags:
+    - participant
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: ../components/schemas/Participants.yaml
+  responses:
+    '200':
+      $ref: ../components/responses/ok.yaml
+    '400':
+      $ref: ../components/responses/bad_req.yaml
+    '404':
+      $ref: ../components/responses/not_found.yaml
+    '500':
+      $ref: ../components/responses/server_error.yaml
+put:
+  summary: add participant to splitcount
+  operationId: addParticipant
+  tags:
+    - participant
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            participant:
+              type: string
+              example: Romeo
+  responses:
+    '200':
+      description: 200 ok
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              ok:
+                type: boolean
+                example: true
+              id:
+                type: string
+                example: kb9t18wbboczf8xecdiy
+    '400':
+      $ref: ../components/responses/bad_req.yaml
+    '404':
+      $ref: ../components/responses/not_found.yaml
+    '500':
+      $ref: ../components/responses/server_error.yaml
