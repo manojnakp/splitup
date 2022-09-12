@@ -1,10 +1,8 @@
 type: object
 properties:
-  errors:
-    type: array
-    items:
-      type: object
-      properties:
-        message:
-          type: string
-          example: Internal Server Error
+  error:
+    type: object
+    properties:
+      message:
+        type: string
+        example: Internal Server Error

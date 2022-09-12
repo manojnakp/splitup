@@ -1,10 +1,8 @@
 type: object
 properties:
-  errors:
-    type: array
-    items:
-      type: object
-      properties:
-        message:
-          type: string
-          example: 'Invalid API request: malformed request syntax'
+  error:
+    type: object
+    properties:
+      message:
+        type: string
+        example: 'Invalid API request: malformed request syntax'

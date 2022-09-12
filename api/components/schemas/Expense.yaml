@@ -11,7 +11,7 @@ properties:
     example: Julia
   when:
     type: string
-    format: date
+    format: date-time
     example: '2016-02-26'
   among:
     type: array
