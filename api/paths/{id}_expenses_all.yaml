@@ -14,7 +14,7 @@ get:
             type: array
             items:
               $ref: ../components/schemas/Expense.yaml
-    '400':
-      $ref: ../components/responses/bad_req.yaml
+    '404':
+      $ref: ../components/responses/not_found.yaml
     '500':
       $ref: ../components/responses/server_error.yaml

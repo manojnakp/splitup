@@ -1,13 +1,17 @@
 post:
-  summary: create new splitcount
-  operationId: newSplitcount
+  summary: add participant to splitcount
+  operationId: addParticipant
   tags:
-    - splitcount
+    - participant
   requestBody:
     content:
       application/json:
         schema:
-          $ref: ../components/schemas/Splitcount.yaml
+          type: object
+          properties:
+            participant:
+              type: string
+              example: Romeo
   responses:
     '200':
       description: 200 ok
@@ -24,5 +28,7 @@ post:
                 example: kb9t18wbboczf8xecdiy
     '400':
       $ref: ../components/responses/bad_req.yaml
+    '404':
+      $ref: ../components/responses/not_found.yaml
     '500':
       $ref: ../components/responses/server_error.yaml

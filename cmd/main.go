@@ -7,6 +7,7 @@ import (
 
 func main() {
 	r := gin.Default()
+	r.SetTrustedProxies(nil)
 	path.Route(r)
 	r.Run()
 }

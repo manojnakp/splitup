@@ -2,13 +2,14 @@ package path
 
 import (
 	"net/http"
+	"reflect"
 
 	"github.com/gin-gonic/gin"
 	"github.com/manojnakp/splitup/pkg/response"
 	"github.com/manojnakp/splitup/pkg/schema"
 )
 
-func GetBalance(c *gin.Context) {
+func GetBalances(c *gin.Context) {
 	id := c.Param("id")
 	balances, got, err := FetchBalances(id)
 	if err != nil {
@@ -33,6 +34,17 @@ func FetchBalances(id string) ([]schema.BalanceUnit, bool, error) {
 	return []schema.BalanceUnit{balance}, true, nil
 }
 
+func CheckBind(jsonobj any) bool {
+	v := reflect.ValueOf(jsonobj)
+	for i := 0; i < v.NumField(); i++ {
+		f := v.Field(i)
+		if f.IsZero() {
+			return false
+		}
+	}
+	return true
+}
+
 func routeOthers(r *gin.Engine) {
-	r.GET("/:id/balance", GetBalance)
+	r.GET("/:id/balance", GetBalances)
 }

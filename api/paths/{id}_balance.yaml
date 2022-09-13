@@ -2,7 +2,7 @@ parameters:
   - $ref: ../components/parameters/id.yaml
 get:
   summary: Get who owes whom
-  operationId: getBalance
+  operationId: getBalances
   tags:
     - other
   responses:
@@ -12,8 +12,6 @@ get:
         application/json:
           schema:
             $ref: ../components/schemas/BalanceArray.yaml
-    '400':
-      $ref: ../components/responses/bad_req.yaml
     '404':
       $ref: ../components/responses/not_found.yaml
     '500':

@@ -5,27 +5,27 @@ info:
   contact:
     name: Dev Team
     url: https://github.com/manojnakp/splitup/issues
-    email: manojnakp2003@gmail.com
+    email: manojna.gopher@gmail.com
   license:
     name: MIT license
     url: https://opensource.org/licenses/MIT
-  version: 1.0.0
+  version: 1.1.0
 servers:
   - url: /
     description: default
 tags:
   - name: splitcount
     x-displayName: Splitcounts
-    description: splitcount objects
+    description: CRUD Splitcounts
   - name: participant
     x-displayName: Participants
-    description: participants objects
+    description: Participants can be modified only if not involved in any expense
   - name: expense
     x-displayName: Expenses
-    description: expenses objects
+    description: Expenses of a splitcount
   - name: other
     x-displayName: Others
-    description: other objects
+    description: Balancing expenses among friends and other handy tools
 paths:
   /all:
     $ref: paths/all.yaml
@@ -35,6 +35,8 @@ paths:
     $ref: paths/new.yaml
   /{id}/participants:
     $ref: paths/{id}_participants.yaml
+  /{id}/participants/new:
+    $ref: paths/{id}_participants_new.yaml
   /{id}/expenses/all:
     $ref: paths/{id}_expenses_all.yaml
   /{id}/expenses/new:

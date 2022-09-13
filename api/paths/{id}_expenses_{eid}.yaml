@@ -3,7 +3,7 @@ parameters:
   - $ref: ../components/parameters/eid.yaml
 get:
   summary: get expense by id
-  operationId: getExpenseById
+  operationId: getExpense
   tags:
     - expense
   responses:
@@ -18,7 +18,7 @@ get:
     '500':
       $ref: ../components/responses/server_error.yaml
 post:
-  summary: Update existing expense
+  summary: Update existing expense by id
   operationId: updateExpense
   tags:
     - expense
@@ -44,8 +44,6 @@ delete:
   responses:
     '200':
       $ref: ../components/responses/ok.yaml
-    '400':
-      $ref: ../components/responses/bad_req.yaml
     '404':
       $ref: ../components/responses/not_found.yaml
     '500':

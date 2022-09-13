@@ -2,7 +2,7 @@ parameters:
   - $ref: ../components/parameters/id.yaml
 get:
   summary: Get splitcount by id
-  operationId: getSplitcountById
+  operationId: getSplitcount
   tags:
     - splitcount
   responses:
@@ -17,7 +17,7 @@ get:
     '500':
       $ref: ../components/responses/server_error.yaml
 post:
-  summary: update existing splitcount
+  summary: update existing splitcount by id
   operationId: updateSplitcount
   tags:
     - splitcount
@@ -43,8 +43,6 @@ delete:
   responses:
     '200':
       $ref: ../components/responses/ok.yaml
-    '400':
-      $ref: ../components/responses/bad_req.yaml
     '404':
       $ref: ../components/responses/not_found.yaml
     '500':

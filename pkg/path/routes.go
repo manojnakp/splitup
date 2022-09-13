@@ -6,4 +6,7 @@ import (
 
 func Route(r *gin.Engine) {
 	routeOthers(r)
+	routeSplitCounts(r)
+	routeParticipants(r)
+	routeExpenses(r)
 }
